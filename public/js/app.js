@@ -16,7 +16,7 @@ document.addEventListener('DOMContentLoaded', function () {
     formMessage.className = 'form-message loading';
 
     try {
-      const response = await fetch('/api/send-service-request', {
+      const response = await fetch('/.netlify/functions/send-email', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
