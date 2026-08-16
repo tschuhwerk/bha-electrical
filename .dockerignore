@@ -1,0 +1,14 @@
+node_modules
+.git
+.gitignore
+.editorconfig
+.gitattributes
+.idea
+.env.example
+*.md
+*.txt
+*.log
+npm-debug.log*
+.DS_Store
+dist
+build

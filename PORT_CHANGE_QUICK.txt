@@ -1,0 +1,214 @@
+╔════════════════════════════════════════════════════════════════════════════╗
+║                                                                            ║
+║                   ✅ YES! CHANGE THE PORT EASILY ✅                      ║
+║                                                                            ║
+║                BHA Electrical LLC - Port Configuration Guide              ║
+║                                                                            ║
+╚════════════════════════════════════════════════════════════════════════════╝
+
+Question: Can the port be something other than 3000?
+Answer:   YES! ✅ Change it to any port you want!
+
+═══════════════════════════════════════════════════════════════════════════════
+
+🚀 EASIEST WAY - Set Environment Variable
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+When running Docker, just set HOST_PORT:
+
+  HOST_PORT=8080 docker-compose up --build
+
+Then visit: http://localhost:8080
+
+That's it! No file editing needed!
+
+═══════════════════════════════════════════════════════════════════════════════
+
+📋 METHOD 1: Environment Variable (Recommended)
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+Option A: One-time use
+  HOST_PORT=8080 docker-compose up --build
+
+Option B: Set in .env file
+  Add this line to .env:
+    HOST_PORT=8080
+  
+  Then run:
+    docker-compose up --build
+
+Option C: Use different port each time
+  HOST_PORT=8000 docker-compose up --build
+  HOST_PORT=9000 docker-compose up --build
+
+═══════════════════════════════════════════════════════════════════════════════
+
+📝 METHOD 2: Edit docker-compose.yml (Permanent)
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+Step 1: Open docker-compose.yml
+  nano docker-compose.yml
+
+Step 2: Find the ports section (look for "ports:")
+  ports:
+    - "3000:3000"
+
+Step 3: Change to your desired port
+  Example - change to 8080:
+  ports:
+    - "8080:3000"
+
+Step 4: Save (Ctrl+X, then Y, then Enter)
+
+Step 5: Run
+  docker-compose up --build
+
+Step 6: Visit
+  http://localhost:8080
+
+═══════════════════════════════════════════════════════════════════════════════
+
+🎯 QUICK PORT CHANGE EXAMPLES
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+Change to 8000:
+  HOST_PORT=8000 docker-compose up --build
+  Visit: http://localhost:8000
+
+Change to 8080:
+  HOST_PORT=8080 docker-compose up --build
+  Visit: http://localhost:8080
+
+Change to 8888:
+  HOST_PORT=8888 docker-compose up --build
+  Visit: http://localhost:8888
+
+Change to 9000:
+  HOST_PORT=9000 docker-compose up --build
+  Visit: http://localhost:9000
+
+═══════════════════════════════════════════════════════════════════════════════
+
+✨ WHAT'S CHANGED
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+docker-compose.yml updated to support HOST_PORT environment variable
+
+OLD: ports: - "3000:3000"
+NEW: ports: - "${HOST_PORT:-3000}:3000"
+
+This means:
+  • Use HOST_PORT environment variable if set
+  • Fall back to 3000 if not set (default)
+  • Easy to change without editing file
+
+═══════════════════════════════════════════════════════════════════════════════
+
+💡 RECOMMENDED PORTS
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+Common alternatives (usually available):
+  ✓ 8000 (common)
+  ✓ 8080 (very common)
+  ✓ 8888 (common development)
+  ✓ 9000 (less common)
+  ✓ 5000 (if Flask not running)
+
+Avoid:
+  ✗ 80 (HTTP - needs admin)
+  ✗ 443 (HTTPS - needs admin)
+  ✗ 22 (SSH)
+  ✗ 3000-3005 (commonly used)
+
+═══════════════════════════════════════════════════════════════════════════════
+
+🔍 CHECK IF PORT IS AVAILABLE
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+Check which process uses port 3000:
+  lsof -i :3000
+
+Check if port 8080 is available:
+  lsof -i :8080
+
+List all listening ports:
+  netstat -tuln | grep LISTEN
+
+═══════════════════════════════════════════════════════════════════════════════
+
+⚡ QUICK START WITH DIFFERENT PORTS
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+Go to project:
+  cd /home/tracy/IdeaProjects/Website
+
+Run on port 8080:
+  HOST_PORT=8080 docker-compose up --build
+
+Visit:
+  http://localhost:8080
+
+Stop:
+  docker-compose down
+
+═══════════════════════════════════════════════════════════════════════════════
+
+📖 HOW PORT MAPPING WORKS
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+Docker port mapping: "HOST_PORT:CONTAINER_PORT"
+
+Example: "8080:3000"
+  ├─ First number (8080) = Your computer's port
+  │  └─ You access website on http://localhost:8080
+  │
+  └─ Second number (3000) = Container's port
+     └─ Application always runs on 3000
+     └─ Never changes
+
+So you change the FIRST number, not the second!
+
+"8080:3000"  ✓ Correct (change first number)
+"3000:8080"  ✗ Wrong (don't change second number)
+
+═══════════════════════════════════════════════════════════════════════════════
+
+📝 PERMANENT VS TEMPORARY
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+TEMPORARY (one run only):
+  HOST_PORT=8080 docker-compose up --build
+  → Next time, back to 3000
+
+PERMANENT (until changed):
+  Add to .env file:
+    HOST_PORT=8080
+  → Always uses 8080
+
+PERMANENT (until changed):
+  Edit docker-compose.yml line 10:
+    ports:
+      - "8080:3000"
+  → Always uses 8080
+
+═══════════════════════════════════════════════════════════════════════════════
+
+✅ SUMMARY
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+Question:  Can I use a different port than 3000?
+Answer:    YES! ✅ Absolutely!
+
+How:       HOST_PORT=8080 docker-compose up --build
+
+Edit way:  Edit docker-compose.yml line 10, change "3000" to your port
+
+.env way:  Add HOST_PORT=8080 to .env file
+
+Visit:     http://localhost:YOUR_PORT
+
+═══════════════════════════════════════════════════════════════════════════════
+
+For more details, see: CHANGE_PORT.md
+
+═══════════════════════════════════════════════════════════════════════════════

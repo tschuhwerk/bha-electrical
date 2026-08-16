@@ -1,0 +1,31 @@
+version: '3.9'
+
+services:
+  bha-electrical:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: bha-electrical-website
+    # CHANGE PORT HERE: Change the first number to your desired port (e.g., "8080:3000")
+    ports:
+      - "${HOST_PORT:-8080}:3000"
+    environment:
+      - NODE_ENV=production
+      - PORT=3000
+      - EMAIL_SERVICE=${EMAIL_SERVICE:-gmail}
+      - EMAIL_USER=${EMAIL_USER}
+      - EMAIL_PASSWORD=${EMAIL_PASSWORD}
+      - BUSINESS_EMAIL=${BUSINESS_EMAIL}
+    env_file:
+      - .env
+    volumes:
+      - ./public:/app/public:ro
+      - ./css:/app/css:ro
+      - ./js:/app/js:ro
+    restart: unless-stopped
+    healthcheck:
+      test: ["CMD", "node", "-e", "require('http').get('http://localhost:3000/health', (r) => {if (r.statusCode !== 200) throw new Error(r.statusCode)})"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+      start_period: 10s

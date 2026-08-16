@@ -1,0 +1,68 @@
+═══════════════════════════════════════════════════════════════════════════════
+                  ✅ CAN YOU USE A DIFFERENT PORT? YES! ✅
+═══════════════════════════════════════════════════════════════════════════════
+
+QUESTION: Can the website port be something other than 3000 since that port 
+          is already used?
+
+ANSWER:   YES! ✅ The port can easily be changed to ANY port you want!
+
+═══════════════════════════════════════════════════════════════════════════════
+
+🚀 QUICKEST SOLUTION (No file editing):
+
+  HOST_PORT=8080 docker-compose up --build
+
+Then visit: http://localhost:8080
+
+That's it! One command, no files to edit!
+
+═══════════════════════════════════════════════════════════════════════════════
+
+📊 THREE METHODS TO CHANGE PORT:
+
+METHOD 1: Environment Variable (EASIEST) ⭐
+  HOST_PORT=8080 docker-compose up --build
+
+METHOD 2: Add to .env file (Permanent)
+  Add line: HOST_PORT=8080
+  Then run: docker-compose up --build
+
+METHOD 3: Edit docker-compose.yml (Manual)
+  Line 10: ports: - "8080:3000"
+  Then run: docker-compose up --build
+
+═══════════════════════════════════════════════════════════════════════════════
+
+💡 RECOMMENDED PORTS:
+
+  ✓ 8000 (common)
+  ✓ 8080 (very common)
+  ✓ 8888 (development)
+  ✓ 9000 (less used)
+
+═══════════════════════════════════════════════════════════════════════════════
+
+🔧 QUICK EXAMPLES:
+
+Use port 8000:  HOST_PORT=8000 docker-compose up --build
+Use port 8080:  HOST_PORT=8080 docker-compose up --build
+Use port 8888:  HOST_PORT=8888 docker-compose up --build
+Use port 9000:  HOST_PORT=9000 docker-compose up --build
+
+═══════════════════════════════════════════════════════════════════════════════
+
+✅ WHAT WAS DONE FOR YOU:
+
+✓ Updated docker-compose.yml to support HOST_PORT variable
+✓ No code changes needed
+✓ Backward compatible (defaults to 3000 if not set)
+✓ Easy to use with any port
+
+═══════════════════════════════════════════════════════════════════════════════
+
+📚 MORE DETAILS:
+
+Read: CHANGE_PORT.md or PORT_CHANGE_QUICK.txt for complete information
+
+═══════════════════════════════════════════════════════════════════════════════
