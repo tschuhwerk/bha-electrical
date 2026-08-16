@@ -111,22 +111,22 @@
   <section id="request-service" class="request-section">
     <div class="container">
       <h2 class="section-title">Request Electrical Service</h2>
-      <form id="serviceForm" class="service-form">
+      <form id="serviceForm" class="service-form" data-netlify="true">
         <div class="form-group">
           <label for="name">Full Name *</label>
           <input type="text" id="name" name="name" required>
         </div>
-        
+
         <div class="form-group">
           <label for="email">Email Address *</label>
           <input type="email" id="email" name="email" required>
         </div>
-        
+
         <div class="form-group">
           <label for="phone">Phone Number *</label>
           <input type="tel" id="phone" name="phone" required>
         </div>
-        
+
         <div class="form-group">
           <label for="serviceType">Type of Service *</label>
           <select id="serviceType" name="serviceType" required>
@@ -140,22 +140,22 @@
             <option value="other">Other</option>
           </select>
         </div>
-        
+
         <div class="form-group">
           <label for="address">Property Address *</label>
           <input type="text" id="address" name="address" required>
         </div>
-        
+
         <div class="form-group">
           <label for="description">Description of Work Needed *</label>
           <textarea id="description" name="description" rows="5" required></textarea>
         </div>
-        
+
         <div class="form-group">
           <label for="preferredDate">Preferred Service Date</label>
           <input type="date" id="preferredDate" name="preferredDate">
         </div>
-        
+
         <button type="submit" class="btn btn-primary">Submit Service Request</button>
         <div id="formMessage" class="form-message"></div>
       </form>
