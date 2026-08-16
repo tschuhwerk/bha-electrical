@@ -363,31 +363,225 @@ body {
 }
 
 /* ============================================
-   Responsive Design
+   Responsive Design - Tablets (768px and below)
    ============================================ */
 
 @media (max-width: 768px) {
+  .container {
+    padding: 0 16px;
+  }
+
   .service-form {
     padding: 25px;
   }
 
   .section-title {
     font-size: 2rem;
+    margin-bottom: 30px;
+  }
+
+  .hero {
+    padding: 60px 0;
+  }
+
+  .hero-content h2 {
+    font-size: 1.8rem;
+    margin-bottom: 15px;
+  }
+
+  .hero-content p {
+    font-size: 1rem;
+    margin-bottom: 20px;
+  }
+
+  .btn {
+    padding: 12px 24px;
+    font-size: 15px;
+  }
+
+  .contact-info {
+    padding: 20px;
   }
 }
 
+/* ============================================
+   Responsive Design - Mobile (480px and below)
+   ============================================ */
+
 @media (max-width: 480px) {
-  .hero-content h2 {
-    font-size: 1.5rem;
+  body {
+    font-size: 14px;
+  }
+
+  .container {
+    padding: 0 12px;
+  }
+
+  /* Navigation */
+  .navbar {
+    padding: 12px 0;
+  }
+
+  .navbar-brand h1 {
+    font-size: 18px;
   }
 
   .nav-menu {
-    font-size: 0.9rem;
-    gap: 15px;
+    font-size: 0.85rem;
+    gap: 12px;
+    justify-content: center;
+    flex-wrap: wrap;
   }
 
-  .services-grid,
+  .nav-link {
+    display: inline-block;
+    padding: 6px 12px;
+  }
+
+  /* Hero Section */
+  .hero {
+    padding: 40px 0;
+    text-align: center;
+  }
+
+  .hero-content h2 {
+    font-size: 1.5rem;
+    margin-bottom: 12px;
+    line-height: 1.3;
+  }
+
+  .hero-content p {
+    font-size: 0.95rem;
+    margin-bottom: 20px;
+  }
+
+  .btn {
+    padding: 10px 20px;
+    font-size: 14px;
+    width: 100%;
+    max-width: 280px;
+  }
+
+  /* Services Grid */
+  .services-grid {
+    grid-template-columns: 1fr;
+    gap: 20px;
+  }
+
+  .service-card {
+    padding: 20px;
+  }
+
+  .service-card h3 {
+    font-size: 1.2rem;
+  }
+
+  .service-card p {
+    font-size: 0.9rem;
+  }
+
+  /* Contact Section */
+  .contact-section {
+    padding: 40px 0;
+  }
+
   .contact-grid {
     grid-template-columns: 1fr;
+    gap: 20px;
+  }
+
+  .contact-info {
+    padding: 15px;
+    text-align: center;
+  }
+
+  .contact-info h3 {
+    font-size: 1.1rem;
+    margin-bottom: 10px;
+  }
+
+  .contact-info p {
+    font-size: 0.9rem;
+  }
+
+  /* Form */
+  .service-section {
+    padding: 40px 0;
+  }
+
+  .service-form {
+    padding: 20px;
+    margin: 0;
+  }
+
+  .form-group {
+    margin-bottom: 15px;
+  }
+
+  .form-group label {
+    font-size: 0.95rem;
+    margin-bottom: 6px;
+  }
+
+  .form-group input,
+  .form-group select,
+  .form-group textarea {
+    padding: 10px;
+    font-size: 16px; /* Prevents iOS zoom on input focus */
+  }
+
+  .btn-submit {
+    width: 100%;
+    padding: 12px;
+    font-size: 15px;
+  }
+
+  .form-message {
+    font-size: 0.9rem;
+    padding: 12px;
+    margin-top: 15px;
+  }
+
+  /* Section Titles */
+  .section-title {
+    font-size: 1.5rem;
+    margin-bottom: 25px;
+  }
+
+  .section-title::after {
+    width: 40px;
+  }
+
+  /* Footer */
+  .footer {
+    padding: 20px 0;
+    font-size: 0.85rem;
+  }
+
+  .footer p {
+    margin: 3px 0;
+  }
+}
+
+/* ============================================
+   Responsive Design - Large Screens (1024px and above)
+   ============================================ */
+
+@media (min-width: 1024px) {
+  .container {
+    padding: 0 30px;
+  }
+
+  .section-title {
+    font-size: 2.8rem;
+    margin-bottom: 60px;
+  }
+
+  .hero {
+    padding: 120px 0;
+  }
+
+  .hero-content h2 {
+    font-size: 2.5rem;
   }
 }
